@@ -59,7 +59,8 @@ p{margin:0 0 1em}
 .topbar b{color:#fff;font-weight:600}
 .topbar a{color:#fff;font-weight:700;text-decoration:none}
 .header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:4px solid var(--red)}
-.header .wrap{display:flex;align-items:center;gap:20px;min-height:84px}
+.header .wrap{display:flex;align-items:center;gap:20px;min-height:84px;max-width:1400px}
+.topbar .wrap{max-width:1400px}
 .logo{display:flex;align-items:center;text-decoration:none;flex:none}
 .logo img{height:62px;width:auto}
 .footer .logo img{height:72px}
@@ -242,7 +243,7 @@ form.qf{display:grid;gap:14px}
 /* Mobile action bar */
 .mbar{display:none}
 
-@media (max-width:1480px){.head-phone{display:none}}
+@media (max-width:1500px){.head-phone{display:none}}
 @media (max-width:1240px){
   .nav{display:none}
   .burger{display:block}
