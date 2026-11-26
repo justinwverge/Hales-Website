@@ -281,7 +281,7 @@ def trust_strip():
 
 def services_grid(exclude=None, heading=True):
     cards = "".join(f'''<a class="card" href="{u("/"+s["slug"]+"/")}"><span class="ico">{ic(s["icon"])}</span><h3>{E(s["nav"])}</h3><p>{E(s["short"])}</p><span class="more">Learn more →</span></a>''' for s in SERVICES if s["slug"] != exclude)
-    h = '''<div class="sec-head"><div><span class="kicker">What we do</span><h2>Heating &amp; cooling services</h2></div><p class="lead">Residential and light commercial HVAC — repaired, maintained and installed by people who live and work here.</p></div>''' if heading else ""
+    h = '''<div class="sec-head"><div><span class="kicker">What we do</span><h2>Heating &amp; Cooling Services</h2></div><p class="lead">Residential and light commercial HVAC — repaired, maintained and installed by people who live and work here.</p></div>''' if heading else ""
     return f'<section class="band paper"><div class="wrap">{h}<div class="grid g3">{cards}</div></div></section>'
 
 def areas_list(cls=""):
