@@ -396,7 +396,7 @@ def home_body():
 {services_grid()}
 <section class="band navy"><div class="wrap why">
 <div><span class="kicker">Why Hale's</span><h2>A local HVAC company that tells you the truth</h2>
-<p class="lead">We're not a call center or a franchise. We're a Watkinsville team of about 20 techs, installers and office staff who answer to our neighbors — so we do the job right and explain it in plain English.</p>
+<p class="lead">We're not a call center or a franchise. We're a Watkinsville team of approximately 20 techs, installers and office staff who answer to our neighbors — so we do the job right and explain it in plain English.</p>
 <div class="btns" style="margin-top:24px">{book_btn()}<a class="btn btn-line" href="{u('/about/')}">About us</a></div></div>
 <ul class="why-list">
 <li>{ic("chat")}<div><h3>Honest, upfront options</h3><p>We diagnose the real problem, show you what we found and give you clear choices before any work starts.</p></div></li>
@@ -591,7 +591,7 @@ def build():
 <section class="band"><div class="wrap layout"><div class="prose">
 <h2>Local, honest and here for the long haul</h2>
 <p>Hale's Heating &amp; Cooling is a locally owned and operated small business in Watkinsville, Georgia, specializing in HVAC service and installation for homes and light commercial buildings. Our goal is simple: deliver high-quality work at a fair price, and treat every customer the way we'd want our own families treated.</p>
-<p>Today we're a team of about 20 — service technicians, install crews and office staff — working out of our shop at 1120 Mars Hill Road. When you call, you reach our local office. When a tech shows up, it's someone who lives and works in this community.</p>
+<p>Today we're a team of approximately 20 — service technicians, install crews and office staff — working out of our shop at 1120 Mars Hill Road. When you call, you reach our local office. When a tech shows up, it's someone who lives and works in this community.</p>
 <h2>What we stand for</h2>
 <ul><li><b>Honesty.</b> We tell you what's actually wrong and what it actually needs — nothing more.</li><li><b>Transparent communication.</b> Clear options and pricing before work starts, and updates along the way.</li><li><b>Quality work.</b> NATE-certified technicians, quality parts and installs done to manufacturer standards.</li><li><b>Customer satisfaction.</b> We're not done until you're comfortable.</li></ul>
 <h2>Credentials</h2>
