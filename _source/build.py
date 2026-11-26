@@ -213,7 +213,7 @@ def header():
 <span>{ic("pin",' width="15"')}Locally owned in <b>Watkinsville, GA</b></span>
 <span class="hide-s">{ic("clock",' width="15"')}{HOURS_TXT}</span>
 <span class="hide-s">{ic("award",' width="15"')}BBB A+ &middot; Lic. {LICENSE}</span>
-<span>{ic("phone",' width="15"')}<a href="tel:{TEL}">{PHONE}</a></span>
+<span class="tb-phone">{ic("phone",' width="17"')}Call <a href="tel:{TEL}">{PHONE}</a></span>
 </div></div>
 <header class="header"><div class="wrap">
 <a class="logo" href="{u('/')}" aria-label="Hale's Heating & Cooling home"><img src="{asset('assets/img/hales-logo.png')}" alt="Hale's Heating & Cooling" width="160" height="56"></a>
@@ -225,7 +225,7 @@ def header():
 <a href="{u('/about/')}"{cur('/about/')}>About</a>
 <a href="{u('/contact/')}"{cur('/contact/')}>Contact</a>
 </nav>
-<div class="head-cta"><a class="head-phone" href="tel:{TEL}">{ic("phone")}{PHONE}</a>{book_btn()}</div>
+<div class="head-cta">{book_btn()}</div>
 <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
 </div></header>
 <nav class="mnav" id="mnav" aria-label="Mobile">
