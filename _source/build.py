@@ -180,7 +180,7 @@ def head(title, desc, path, extra_ld=()):
 <meta name="description" content="{E(desc)}">
 <link rel="canonical" href="{canon}">
 <meta name="robots" content="{"noindex,nofollow" if GITHUB else "index,follow,max-image-preview:large"}">
-<meta name="theme-color" content="#0e2240">
+<meta name="theme-color" content="#00007D">
 <meta name="geo.region" content="US-GA"><meta name="geo.placename" content="Watkinsville">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Hale's Heating &amp; Cooling">
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}">
@@ -192,7 +192,7 @@ def head(title, desc, path, extra_ld=()):
 <link rel="apple-touch-icon" href="{asset('apple-touch-icon.png')}">
 <link rel="manifest" href="{asset('site.webmanifest')}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,700;0,800;1,800;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{asset('assets/css/site.css')}">
 {ld}
 </head>
@@ -269,7 +269,7 @@ def page_hero(h1, lead, trail):
 <ol class="crumbs">{li}</ol>
 <h1>{h1}</h1><p class="lead">{lead}</p>
 <div class="btns" style="margin-top:22px">{book_btn()}{call_btn()}</div>
-</div></section>'''
+</div></section>''' + SWOOSH
 
 def trust_strip():
     return f'''<section class="trust" aria-label="Credentials"><ul>
@@ -280,8 +280,8 @@ def trust_strip():
 </ul></section>'''
 
 def services_grid(exclude=None, heading=True):
-    cards = "".join(f'''<a class="card" href="{u("/"+s["slug"]+"/")}"><span class="ico">{ic(s["icon"])}</span><h3>{E(s["nav"])}</h3><p>{E(s["short"])}</p><span class="more">Learn more →</span></a>''' for s in SERVICES if s["slug"] != exclude)
-    h = '''<div class="sec-head"><div><span class="kicker">What we do</span><h2>Heating &amp; Cooling Services</h2></div><p class="lead">Residential and light commercial HVAC — repaired, maintained and installed by people who live and work here.</p></div>''' if heading else ""
+    cards = "".join(f'''<a class="card" href="{u("/"+s["slug"]+"/")}"><h3>{E(s["nav"])}</h3><p>{E(s["short"])}</p><span class="more">Learn more →</span></a>''' for s in SERVICES if s["slug"] != exclude)
+    h = '''<div class="sec-head"><div><h2>Heating &amp; Cooling Services</h2></div><p class="lead">Residential and light commercial HVAC — repaired, maintained and installed by people who live and work here.</p></div>''' if heading else ""
     return f'<section class="band paper"><div class="wrap">{h}<div class="grid g3">{cards}</div></div></section>'
 
 def areas_list(cls=""):
@@ -289,12 +289,12 @@ def areas_list(cls=""):
 
 def faq_block(faq, title="Frequently asked questions"):
     items = "".join(f'<details><summary>{E(q)}</summary><p>{E(a)}</p></details>' for q, a in faq)
-    return f'<section class="band"><div class="wrap"><span class="kicker">FAQ</span><h2>{title}</h2><div class="faq">{items}</div></div></section>'
+    return f'<section class="band"><div class="wrap"><h2>{title}</h2><div class="faq">{items}</div></div></section>'
 
 def reviews_block(n=3, more=True):
     cards = "".join(f'<article class="review"><div class="stars" aria-hidden="true">{STAR*5}</div><p>{E(t)}</p><footer>{E(nm)}<small>{E(k)}</small></footer></article>' for nm, k, t in REVIEWS[:n])
     m = f'<div class="btns" style="margin-top:26px"><a class="btn btn-line" href="{u("/reviews/")}">Read more reviews</a><a class="btn btn-line" href="{GREVIEWS}" target="_blank" rel="noopener">See us on Google</a></div>' if more else ""
-    return f'<section class="band paper"><div class="wrap"><div class="sec-head"><div><span class="kicker">Reviews</span><h2>What our customers say</h2></div><p class="lead">Neighbors across Oconee and Clarke County trust Hale\'s with their comfort.</p></div><div class="grid g3">{cards}</div>{m}</div></section>'
+    return f'<section class="band paper"><div class="wrap"><div class="sec-head"><div><h2>What our customers say</h2></div><p class="lead">Neighbors across Oconee and Clarke County trust Hale\'s with their comfort.</p></div><div class="grid g3">{cards}</div>{m}</div></section>'
 
 def cta_band(h="Need heating or AC service?", p="Book online in under a minute, or call and talk to a real person in our Watkinsville office."):
     return f'<section class="band cta"><div class="wrap"><div><h2>{h}</h2><p>{p}</p></div><div class="btns">{book_btn()}{call_btn("btn btn-white")}</div></div></section>'
@@ -374,28 +374,27 @@ SCENE = '''<svg class="scene" viewBox="0 0 560 460" role="img" aria-label="Illus
 </g>
 </svg>'''
 
+SWOOSH = '<div class="swoosh" aria-hidden="true"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M180 30C560 6 980 4 1440 22V28C980 16 560 22 210 36z" fill="#E3141C"/><path d="M0 52C420 26 920 26 1380 44C920 40 420 44 0 64z" fill="#00007D"/></svg></div>'
 # ---------------------------------------------------------------- pages
 def home_body():
-    opts = [("wrench","Repair","AC or heat not working"),("shield","Tune-Up","Seasonal maintenance"),("unit","New System","Free replacement estimate"),("wind","Air Quality","Filtration & humidity")]
-    o = "".join(f'<a href="{BOOK}" target="_blank" rel="noopener" data-track="book-{t.lower()}">{ic(i)}{t}<small>{s}</small></a>' for i,t,s in opts)
+    opts = [("AC or Heating Repair","/repair/"),("Maintenance / Tune-Up","/maintenance/"),("New System Estimate","/installation/"),("Indoor Air Quality","/indoor-air-quality/"),("Commercial Service","/commercial-hvac/")]
+    o = "".join(f'<li><a href="{BOOK}" target="_blank" rel="noopener">{t}<span aria-hidden="true">&rsaquo;</span></a></li>' for t,p in opts)
     return f'''
 <section class="hero"><div class="wrap">
 <div>
-<h1>Heating &amp; Air Conditioning in <em>Watkinsville</em> &amp; Athens, GA</h1>
-<p class="lead">Fast, honest AC and furnace repair, maintenance and Carrier® system installation from a locally owned team that treats your home like our own.</p>
-<div class="btns" style="margin-top:26px">{book_btn("Schedule Now")}{call_btn()}</div>
-<ul class="chips"><li>{ic("check")}NATE-certified techs</li><li>{ic("check")}BBB A+ rated</li><li>{ic("check")}Open 7 days, 7am–7pm</li></ul>
+<h1>Heating &amp; Air Conditioning in Watkinsville &amp; Athens, GA</h1>
+<p class="lead">Honest AC and furnace repair, maintenance and Carrier&reg; system installation from a locally owned team that treats your home like our own.</p>
+<div class="btns" style="margin-top:24px">{book_btn("Schedule Now")}{call_btn()}</div>
+<p class="creds">NATE-Certified Technicians &nbsp;&bull;&nbsp; BBB A+ Rated &nbsp;&bull;&nbsp; Open 7 Days, 7am&ndash;7pm</p>
 <div class="cbadge"><img src="{asset('assets/img/carrier-logo.png')}" alt="Carrier" width="110" height="44"><span><b>Carrier Factory Authorized Dealer</b>Recognized by Carrier for training, install quality &amp; customer satisfaction</span></div>
 </div>
-<div style="display:grid;gap:18px">
-{SCENE}
-<div class="book" style="margin-top:-70px"><h2>What do you need help with?</h2><p>Book online in under a minute — pick your service and a time that works.</p><div class="book-opts">{o}</div>{book_btn("Schedule Now")}<p class="or">Prefer to talk? <a href="tel:{TEL}">Call {PHONE}</a></p></div>
-</div>
+<div class="book"><h2>Schedule Service</h2><p>Book online in under a minute, or call <a href="tel:{TEL}">{PHONE}</a>.</p><ul class="book-list">{o}</ul>{book_btn("Schedule Now")}</div>
 </div></section>
+{SWOOSH}
 {trust_strip()}
 {services_grid()}
 <section class="band navy"><div class="wrap why">
-<div><span class="kicker">Why Hale's</span><h2>A local HVAC company that tells you the truth</h2>
+<div><h2>A local HVAC company that tells you the truth</h2>
 <p class="lead">We're not a call center or a franchise. We're a Watkinsville team of approximately 20 techs, installers and office staff who answer to our neighbors — so we do the job right and explain it in plain English.</p>
 <div class="btns" style="margin-top:24px">{book_btn()}<a class="btn btn-line" href="{u('/about/')}">About us</a></div></div>
 <ul class="why-list">
@@ -404,7 +403,7 @@ def home_body():
 <li>{ic("shield")}<div><h3>NATE-certified technicians</h3><p>Our techs are trained and tested on real-world HVAC — and they show up on time, polite and prepared.</p></div></li>
 <li>{ic("home")}<div><h3>Residential &amp; commercial</h3><p>From a single heat pump to a building full of rooftop units, we handle homes and light commercial properties.</p></div></li>
 </ul></div></section>
-<section class="band"><div class="wrap"><div class="sec-head"><div><span class="kicker">How it works</span><h2>Comfort back in four simple steps</h2></div></div>
+<section class="band"><div class="wrap"><div class="sec-head"><div><h2>Comfort back in four simple steps</h2></div></div>
 <ol class="steps">
 <li><h3>Book online or call</h3><p>Schedule in under a minute with our online booking, or call {PHONE}.</p></li>
 <li><h3>We diagnose it right</h3><p>A NATE-certified tech tests the whole system and finds the actual cause.</p></li>
@@ -414,7 +413,7 @@ def home_body():
 <section class="band promo"><div class="wrap"><div><h2>Don't wait for the first 95° day</h2><p>A spring and fall tune-up catches weak parts before they fail, keeps your energy bills down and protects your equipment. Ask about our maintenance plans — members get priority when the heat hits.</p></div>
 <div class="btns">{book_btn("Book a Tune-Up","btn btn-white")}</div></div></section>
 {reviews_block()}
-<section class="band"><div class="wrap"><div class="sec-head"><div><span class="kicker">Service area</span><h2>Proudly serving Oconee County &amp; beyond</h2></div><p class="lead">Based on Mars Hill Road in Watkinsville, we cover Oconee, Clarke, Barrow and Walton Counties.</p></div>{areas_list()}</div></section>
+<section class="band"><div class="wrap"><div class="sec-head"><div><h2>Proudly serving Oconee County &amp; beyond</h2></div><p class="lead">Based on Mars Hill Road in Watkinsville, we cover Oconee, Clarke, Barrow and Walton Counties.</p></div>{areas_list()}</div></section>
 <section class="band paper" style="padding-top:0;background:#fff"><div class="wrap"><div class="callout" style="display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:0">
 <div><h3 style="margin:0 0 6px">Financing available on new Carrier systems</h3><p style="margin:0;color:var(--muted)">Monthly payment options through Wells Fargo, subject to credit approval.</p></div>
 <a class="btn btn-line" href="{u('/financing/')}">{ic("dollar")}See financing</a></div></div></section>
@@ -639,7 +638,7 @@ def build():
 
     # Service areas hub + cities
     def hub():
-        cards = "".join(f'<a class="card" href="{u("/service-areas/"+c["slug"]+"/")}"><span class="ico">{ic("pin")}</span><h3>{c["name"]}, GA</h3><p>{E(c["county"])}</p><span class="more">HVAC in {c["name"]} →</span></a>' for c in CITIES)
+        cards = "".join(f'<a class="card" href="{u("/service-areas/"+c["slug"]+"/")}"><h3>{c["name"]}, GA</h3><p>{E(c["county"])}</p><span class="more">HVAC in {c["name"]} →</span></a>' for c in CITIES)
         return page_hero("HVAC Service Areas", "From our shop in Watkinsville, Hale's serves homes and businesses across Oconee, Clarke, Barrow and Walton Counties.", [("Home","/"),("Service Areas","/service-areas/")]) + f'''
 <section class="band paper"><div class="wrap"><div class="grid g4">{cards}</div>
 <p style="margin-top:28px;color:var(--muted)">Don't see your town? Call {PHONE} — if you're nearby, there's a good chance we can help.</p></div></section>{services_grid()}{cta_band()}'''
