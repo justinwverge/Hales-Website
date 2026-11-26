@@ -7,7 +7,7 @@ LAYOUT: classic contractor site — white header with big logo, square buttons, 
 */
 :root{
   color-scheme:light;
-  --navy:#00007D;--navy-d:#000058;--navy-3:#00007D;
+  --navy:#00007D;--navy-d:#00007D;--navy-3:#00007D;
   --red:#E3141C;--red-d:#BC0F16;
   --paper:#F3F4F7;--white:#fff;--ink:#14141F;--muted:#4A4E5C;--line:#D9DBE3;
   --r:4px;--max:1180px;
@@ -71,7 +71,7 @@ p{margin:0 0 1em}
 .nav>a,.nav .dd>button{white-space:nowrap;font:700 15px/1 var(--body);text-transform:uppercase;letter-spacing:.02em;color:var(--navy);text-decoration:none;padding:12px 8px;background:none;border:0;cursor:pointer}
 .nav>a:hover,.nav .dd>button:hover,.nav a[aria-current=page]{color:var(--red)}
 .dd{position:relative}
-.dd-menu{position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);padding:6px 0;min-width:250px;display:none;box-shadow:0 8px 18px rgba(0,0,40,.12)}
+.dd-menu{position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);padding:6px 0;min-width:250px;display:none;box-shadow:0 8px 18px rgba(0,0,125,.12)}
 .dd:hover .dd-menu,.dd:focus-within .dd-menu{display:block}
 .dd-menu a{display:block;padding:10px 16px;text-decoration:none;color:var(--ink);font-weight:600}
 .dd-menu a:hover{background:var(--paper);color:var(--red)}
@@ -128,7 +128,7 @@ a.card:hover h3{color:var(--red)}
 .why-list{display:grid;gap:0;list-style:none;padding:0;margin:0;border-top:1px solid rgba(255,255,255,.25)}
 .why-list li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.25)}
 .why-list svg{display:none}
-.why-list .cmini{width:54px;height:auto;flex:none;align-self:flex-start;margin-top:3px;background:#fff;padding:4px;box-sizing:content-box}
+.why-list .cmini{width:64px;height:auto;flex:none;align-self:flex-start;margin-top:4px}
 .why-list h3{margin-bottom:4px;font-size:20px}
 .why-list p{margin:0;color:#dfe2ff;font-size:16px}
 

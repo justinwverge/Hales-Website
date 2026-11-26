@@ -54,7 +54,6 @@ I = {
 def ic(n, extra=""):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"{extra}>{I[n]}</svg>'
 STAR = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>'
-LOGO = '''<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#0e2240"/><path d="M24 8 9 20v20h30V20z" fill="#16325c"/><path d="M24 8 9 20" stroke="#c8202f" stroke-width="3.2" stroke-linecap="round"/><path d="M24 8l15 12" stroke="#9cc8ee" stroke-width="3.2" stroke-linecap="round"/><path d="M17 24v12M31 24v12M17 30h14" stroke="#fff" stroke-width="3.6" stroke-linecap="round"/></svg>'''
 
 # ---------------------------------------------------------------- links
 def rel_prefix(path):
@@ -253,7 +252,7 @@ def footer():
 <li><a href="{u('/about/')}">About Hale's</a></li><li><a href="{u('/reviews/')}">Reviews</a></li><li><a href="{u('/contact/')}">Contact</a></li>
 <li><a href="{BOOK}" target="_blank" rel="noopener">Schedule Online</a></li>
 <li><a href="{u('/privacy/')}">Privacy Policy</a></li><li><a href="{u('/accessibility-statement/')}">Accessibility</a></li></ul>
-<img src="{asset('assets/img/carrier-logo.png')}" alt="Carrier Factory Authorized Dealer" width="120" height="48" loading="lazy" style="margin-top:18px;background:#fff;padding:6px 10px;border-radius:8px;box-sizing:content-box">
+<img src="{asset('assets/img/carrier-logo-white.png')}" alt="Carrier Factory Authorized Dealer" width="120" height="48" loading="lazy" style="margin-top:18px">
 <p style="margin-top:12px;font-size:14px">Carrier Factory Authorized Dealer<br>NATE-Certified Technicians<br>BBB Accredited, A+ Rating<br>Georgia License {LICENSE.replace('GA ','')}</p></div>
 </div>
 <div class="legal"><div class="wrap"><span>&copy; {date.today().year} Hale's Heating &amp; Cooling, LLC. All rights reserved.</span><span>Serving Oconee, Clarke, Barrow &amp; Walton Counties</span></div></div>
@@ -324,55 +323,6 @@ def page(path, title, desc, body, ld=(), prio="0.7"):
     if path != "/404/":
         PAGES.append((path, prio))
 
-# ---------------------------------------------------------------- hero scene
-SCENE = '''<svg class="scene" viewBox="0 0 560 460" role="img" aria-label="Illustration of a home with an outdoor air conditioning unit">
-<defs>
-<linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22487f"/><stop offset="1" stop-color="#132c52"/></linearGradient>
-<linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f9"/><stop offset="1" stop-color="#c9d2de"/></linearGradient>
-<linearGradient id="g3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffb07a"/><stop offset="1" stop-color="#ff7a45"/></linearGradient>
-<radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd38a"/><stop offset="1" stop-color="#ff9a4d" stop-opacity="0"/></radialGradient>
-</defs>
-<circle cx="470" cy="70" r="70" fill="url(#sun)" opacity=".55"/>
-<circle cx="470" cy="70" r="26" fill="#ffc46b"/>
-<ellipse cx="280" cy="420" rx="270" ry="26" fill="#071427" opacity=".55"/>
-<!-- house -->
-<path d="M70 210 250 80l180 130v200H70z" fill="url(#g1)"/>
-<path d="M44 222 250 72l206 150" fill="none" stroke="#c8202f" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M250 72l206 150" fill="none" stroke="#e23a48" stroke-width="5" stroke-linecap="round" opacity=".6"/>
-<rect x="110" y="250" width="80" height="70" rx="6" fill="#ffd9a6"/><path d="M150 250v70M110 285h80" stroke="#132c52" stroke-width="6"/>
-<rect x="290" y="250" width="70" height="70" rx="6" fill="#bfe0ff"/><path d="M325 250v70M290 285h70" stroke="#132c52" stroke-width="6"/>
-<rect x="215" y="300" width="70" height="110" rx="6" fill="#0b1c35"/><circle cx="272" cy="358" r="4" fill="#ffc46b"/>
-<rect x="70" y="404" width="360" height="8" fill="#0b1c35" opacity=".5"/>
-<!-- cool air -->
-<g fill="none" stroke="#9cc8ee" stroke-width="5" stroke-linecap="round" opacity=".9">
-<path class="flow" d="M300 170c30-14 60 14 90 0"/><path class="flow" d="M290 196c34-14 66 14 100 0"/>
-</g>
-<!-- condenser -->
-<g transform="translate(372 286)">
-<rect x="0" y="118" width="168" height="10" rx="3" fill="#0a1830"/>
-<rect x="6" y="0" width="156" height="120" rx="10" fill="url(#g2)"/>
-<rect x="6" y="0" width="156" height="12" rx="6" fill="#ffffff"/>
-<g stroke="#9aa7b8" stroke-width="2">
-<path d="M18 26v84M26 26v84M34 26v84M42 26v84M50 26v84M58 26v84M66 26v84M74 26v84M82 26v84M90 26v84M98 26v84M106 26v84M114 26v84M122 26v84M130 26v84M138 26v84M146 26v84"/>
-</g>
-<circle cx="84" cy="66" r="40" fill="#1a2c44"/><circle cx="84" cy="66" r="40" fill="none" stroke="#d7dee8" stroke-width="5"/>
-<g class="fan"><path d="M84 66c-4-18 4-30 16-30-2 12-8 22-16 30zM84 66c18-4 30 4 30 16-12-2-22-8-30-16zM84 66c4 18-4 30-16 30 2-12 8-22 16-30zM84 66c-18 4-30-4-30-16 12 2 22 8 30 16z" fill="#8aa0bb"/></g>
-<circle cx="84" cy="66" r="6" fill="#d7dee8"/>
-<rect x="128" y="100" width="26" height="8" rx="2" fill="#c8202f"/>
-<path d="M6 40h-24v-60" fill="none" stroke="#3b4d66" stroke-width="7" stroke-linecap="round"/>
-<path d="M6 54h-34v-74" fill="none" stroke="#5a6c85" stroke-width="5" stroke-linecap="round"/>
-</g>
-<!-- heat waves off unit -->
-<g fill="none" stroke="url(#g3)" stroke-width="5" stroke-linecap="round" opacity=".9">
-<path class="flow" d="M430 270c-8-14 8-24 0-38"/><path class="flow" d="M460 270c-8-14 8-24 0-38"/><path class="flow" d="M490 270c-8-14 8-24 0-38"/>
-</g>
-<!-- tag -->
-<g transform="translate(36 150) rotate(-6)">
-<rect width="186" height="64" rx="10" fill="#fff"/><circle cx="18" cy="32" r="6" fill="#0e2240"/>
-<text x="34" y="28" font-family="Barlow Condensed,Arial Narrow,sans-serif" font-weight="800" font-size="20" fill="#0e2240">SYSTEM CHECK</text>
-<text x="34" y="50" font-family="Barlow,Arial,sans-serif" font-weight="600" font-size="14" fill="#1f8a3b">● Running great</text>
-</g>
-</svg>'''
 
 SWOOSH = '<div class="swoosh" aria-hidden="true"><svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M180 30C560 6 980 4 1440 22V28C980 16 560 22 210 36z" fill="#E3141C"/><path d="M0 52C420 26 920 26 1380 44C920 40 420 44 0 64z" fill="#00007D"/></svg></div>'
 # ---------------------------------------------------------------- pages
@@ -399,7 +349,7 @@ def home_body():
 <div class="btns" style="margin-top:24px">{book_btn()}<a class="btn btn-line" href="{u('/about/')}">About us</a></div></div>
 <ul class="why-list">
 <li>{ic("chat")}<div><h3>Honest, upfront options</h3><p>We diagnose the real problem, show you what we found and give you clear choices before any work starts.</p></div></li>
-<li><img class="cmini" src="{asset('assets/img/carrier-logo.png')}" alt="Carrier" width="60" height="24" loading="lazy"><div><h3>Carrier Factory Authorized</h3><p>One of a select group of dealers recognized by Carrier for training, installation quality and customer satisfaction.</p></div></li>
+<li><img class="cmini" src="{asset('assets/img/carrier-logo-white.png')}" alt="Carrier" width="64" height="26" loading="lazy"><div><h3>Carrier Factory Authorized</h3><p>One of a select group of dealers recognized by Carrier for training, installation quality and customer satisfaction.</p></div></li>
 <li>{ic("shield")}<div><h3>NATE-certified technicians</h3><p>Our techs are trained and tested on real-world HVAC — and they show up on time, polite and prepared.</p></div></li>
 <li>{ic("home")}<div><h3>Residential &amp; commercial</h3><p>From a single heat pump to a building full of rooftop units, we handle homes and light commercial properties.</p></div></li>
 </ul></div></section>
