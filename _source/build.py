@@ -186,8 +186,11 @@ def head(title, desc, path, extra_ld=()):
 <meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{canon}"><meta property="og:image" content="{SITE}/assets/img/og-image.png">
 <meta property="og:locale" content="en_US"><meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="{asset('assets/img/favicon.svg')}" type="image/svg+xml">
-<link rel="apple-touch-icon" href="{asset('assets/img/apple-touch-icon.png')}">
+<link rel="icon" href="{asset('favicon.ico')}" sizes="any">
+<link rel="icon" href="{asset('favicon.svg')}" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="{asset('favicon-32x32.png')}">
+<link rel="apple-touch-icon" href="{asset('apple-touch-icon.png')}">
+<link rel="manifest" href="{asset('site.webmanifest')}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{asset('assets/css/site.css')}">
@@ -547,6 +550,7 @@ def city_page(c):
 def build():
     if os.path.exists(OUT): shutil.rmtree(OUT)
     shutil.copytree("src/assets", os.path.join(OUT, "assets"))
+    for f in os.listdir("src/root"): shutil.copy(os.path.join("src/root", f), OUT)
 
     page("/", "HVAC Repair & AC Service in Watkinsville, GA | Hale's Heating & Cooling",
          "Locally owned heating & air conditioning company in Watkinsville, GA. AC & furnace repair, maintenance and Carrier installs for Athens & Oconee County. Schedule online.",
